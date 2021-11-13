@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Alert, Button, Form, Jumbotron } from "react-bootstrap";
+import { Alert, Button, Form, div } from "react-bootstrap";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
