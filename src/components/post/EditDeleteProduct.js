@@ -5,7 +5,7 @@ import { Button, Form, Jumbotron } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { authOptions } from "../../utils/requestOptions";
 
-export default function EditDeletePost() {
+export default function EditDeleteProduct() {
   const axios = require("axios");
 
   // React router dom

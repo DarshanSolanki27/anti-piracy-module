@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { authOptions } from "../../utils/requestOptions";
 
-export default function CreatePost() {
+export default function CreateProduct() {
   const axios = require("axios");
   const history = useHistory();
 

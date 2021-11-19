@@ -8,10 +8,10 @@ import ConfirmAccountDelete from "./components/account/ConfirmAccountDelete";
 import PasswordChange from "./components/account/PasswordChange";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import UserPosts from "./components/post/UserPosts";
-import PostDetailed from "./components/post/PostDetailed";
-import CreatePost from "./components/post/CreatePost";
-import EditDeletePost from "./components/post/EditDeletePost";
+import UserProducts from "./components/post/UserProducts";
+import ProductDetailed from "./components/post/ProductDetailed";
+import CreateProduct from "./components/post/CreateProduct";
+import EditDeleteProduct from "./components/post/EditDeleteProduct";
 
 // Context
 import AuthProvider from "./contexts/AuthContext";
@@ -25,15 +25,15 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/:username" component={UserPosts} />
-          <Route exact path="/p/create" component={CreatePost} />
+          <Route exact path="/:username" component={UserProducts} />
+          <Route exact path="/p/create" component={CreateProduct} />
           <Route
             exact
             path="/:username/confirm-delete"
             component={ConfirmAccountDelete}
           />
-          <Route exact path="/p/:slug" component={PostDetailed} />
-          <Route exact path="/p/:slug/edit" component={EditDeletePost} />
+          <Route exact path="/p/:slug" component={ProductDetailed} />
+          <Route exact path="/p/:slug/edit" component={EditDeleteProduct} />
           <Route
             exact
             path="/:username/change-password"

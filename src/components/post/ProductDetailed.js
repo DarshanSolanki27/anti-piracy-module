@@ -4,7 +4,7 @@ import { Button, Container } from "react-bootstrap";
 
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function PostDetailed() {
+export default function ProductDetailed() {
   const axios = require("axios");
 
   const history = useHistory();

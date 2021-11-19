@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
-import PostCard from "./post/PostCard";
+import PostCard from "./post/ProductCard";
 
 export default function Home() {
   const axios = require("axios");
 
   // State
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([
+    {
+      title: " MS WORD",
+      slug: "thisisslugofpost",
+      content: "Avail MS word at 50% sale",
+      modified: "23/2/21",
+      author: "Vatsal",
+    },
+    {
+      title: " this is title of post",
+      slug: "thisisslugofpost",
+      content: "this is content of post",
+      modified: "23/2/21",
+      author: "Vatsal",
+    },
+  ]);
+  const [loading, setLoading] = useState(false);
 
   // Fetching all blog posts
-  useEffect(() => {
-    axios
-      .get("/api/p")
-      .then((response) => {
-        setPosts(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [posts]);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/p")
+  //     .then((response) => {
+  //       setPosts(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [posts]);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" className="m-5" />;
