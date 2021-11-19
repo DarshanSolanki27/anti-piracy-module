@@ -8,10 +8,10 @@ import ConfirmAccountDelete from "./components/account/ConfirmAccountDelete";
 import PasswordChange from "./components/account/PasswordChange";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import UserProducts from "./components/post/UserProducts";
-import ProductDetailed from "./components/post/ProductDetailed";
-import CreateProduct from "./components/post/CreateProduct";
-import EditDeleteProduct from "./components/post/EditDeleteProduct";
+import UserProducts from "./components/product/UserProducts";
+import ProductDetailed from "./components/product/ProductDetailed";
+import CreateProduct from "./components/product/CreateProduct";
+import EditDeleteProduct from "./components/product/EditDeleteProduct";
 
 // Context
 import AuthProvider from "./contexts/AuthContext";
