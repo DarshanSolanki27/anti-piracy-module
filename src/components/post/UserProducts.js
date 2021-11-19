@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
-import PostCard from "./PostCard";
+import ProductCard from "./ProductCard";
 import { useAuth } from "../../contexts/AuthContext";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
@@ -62,7 +62,7 @@ export default function UserProducts() {
         <Jumbotron className="m-1">
           <h2 className="m-2">{username}'s blogs</h2>
           {posts.map((post) => (
-            <PostCard post={post} isAuthor={isAuthor} />
+            <ProductCard post={post} isAuthor={isAuthor} />
           ))}
         </Jumbotron>
       );

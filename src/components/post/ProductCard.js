@@ -14,70 +14,70 @@ export default function PostCard({ post, isAuthor }) {
   };
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent className={classes.cardContent}>
-        <Typography variant="h5">
-          {capitalizeFirstLetter(projectData.name)}
-        </Typography>
-        <Typography variant="body1">
-          {capitalizeFirstLetter(projectData.description)}
-        </Typography>
-      </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button color="tertiary" href={projectData.code} variant="contained">
-          Code
-        </Button>
-        <Button color="secondary" href={projectData.url} variant="contained">
-          Visit
-        </Button>
-      </CardActions>
-    </Card>
-    // <Card
-    //   className="m-3"
-    //   style={{
-    //     backgroundColor: "lightsteelblue",
-    //     border: "3px solid darkblue",
-    //   }}
-    // >
-    //   <Card.Header>
-    //     <h1>{post.title}</h1>
-    //     <img src={logo}></img>
-    //     {isAuthor === true && (
-    //       <span>
-    //         <Button
-    //           id="edit"
-    //           onClick={() => handleButtonClick(`/p/${post.slug}/edit`)}
-    //         >
-    //           Edit
-    //         </Button>
-    //       </span>
-    //     )}
-    //     <div className="">last edited: {post.modified}</div>
-    //     <Card.Subtitle className="text-muted">
-    //       <footer
-    //         id="author"
-    //         className="blockquote-footer d-flex justify-content-end"
-    //       >
-    //         <cite
-    //           onClick={() => history.push(`/${post.author}`)}
-    //           style={{ cursor: "pointer" }}
-    //         >
-    //           Author: {post.author}
-    //         </cite>
-    //       </footer>
-    //     </Card.Subtitle>
-    //   </Card.Header>
-
-    //   <Card.Body
-    //     onClick={() => handleButtonClick(`/p/${post.slug}`)}
-    //     style={{ width: "98%", cursor: "pointer" }}
-    //   >
-    //     <blockquote className="blockquote">
-    //       {post.content.length > 50
-    //         ? post.content.substr(0, 50) + "..."
-    //         : post.content}
-    //     </blockquote>
-    //   </Card.Body>
+    // <Card className={classes.root} variant="outlined">
+    //   <CardContent className={classes.cardContent}>
+    //     <Typography variant="h5">
+    //       {capitalizeFirstLetter(projectData.name)}
+    //     </Typography>
+    //     <Typography variant="body1">
+    //       {capitalizeFirstLetter(projectData.description)}
+    //     </Typography>
+    //   </CardContent>
+    //   <CardActions className={classes.cardActions}>
+    //     <Button color="tertiary" href={projectData.code} variant="contained">
+    //       Code
+    //     </Button>
+    //     <Button color="secondary" href={projectData.url} variant="contained">
+    //       Visit
+    //     </Button>
+    //   </CardActions>
     // </Card>
+    <Card
+      className="m-3"
+      style={{
+        backgroundColor: "lightsteelblue",
+        border: "3px solid darkblue",
+      }}
+    >
+      <Card.Header>
+        <h1>{post.title}</h1>
+        <img src={logo}></img>
+        {isAuthor === true && (
+          <span>
+            <Button
+              id="edit"
+              onClick={() => handleButtonClick(`/p/${post.slug}/edit`)}
+            >
+              Edit
+            </Button>
+          </span>
+        )}
+        <div className="">last edited: {post.modified}</div>
+        <Card.Subtitle className="text-muted">
+          <footer
+            id="author"
+            className="blockquote-footer d-flex justify-content-end"
+          >
+            <cite
+              onClick={() => history.push(`/${post.author}`)}
+              style={{ cursor: "pointer" }}
+            >
+              Author: {post.author}
+            </cite>
+          </footer>
+        </Card.Subtitle>
+      </Card.Header>
+
+      <Card.Body
+        onClick={() => handleButtonClick(`/p/${post.slug}`)}
+        style={{ width: "98%", cursor: "pointer" }}
+      >
+        <blockquote className="blockquote">
+          {post.content.length > 50
+            ? post.content.substr(0, 50) + "..."
+            : post.content}
+        </blockquote>
+      </Card.Body>
+    </Card>
   );
 }
