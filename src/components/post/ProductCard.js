@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 
-import logo from "./logo512.png";
+import logo from "./Microsoft-Word-Logo.png";
 export default function PostCard({ post, isAuthor }) {
   const history = useHistory();
 
@@ -14,24 +14,6 @@ export default function PostCard({ post, isAuthor }) {
   };
 
   return (
-    // <Card className={classes.root} variant="outlined">
-    //   <CardContent className={classes.cardContent}>
-    //     <Typography variant="h5">
-    //       {capitalizeFirstLetter(projectData.name)}
-    //     </Typography>
-    //     <Typography variant="body1">
-    //       {capitalizeFirstLetter(projectData.description)}
-    //     </Typography>
-    //   </CardContent>
-    //   <CardActions className={classes.cardActions}>
-    //     <Button color="tertiary" href={projectData.code} variant="contained">
-    //       Code
-    //     </Button>
-    //     <Button color="secondary" href={projectData.url} variant="contained">
-    //       Visit
-    //     </Button>
-    //   </CardActions>
-    // </Card>
     <Card
       className="m-3"
       style={{
@@ -41,7 +23,7 @@ export default function PostCard({ post, isAuthor }) {
     >
       <Card.Header>
         <h1>{post.title}</h1>
-        <img src={logo}></img>
+        <img src={logo} width="200" height="125"></img>
         {isAuthor === true && (
           <span>
             <Button

@@ -11,7 +11,7 @@ export default function Login() {
 
   // State
   const [request, setRequest] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const [msg, setMsg] = useState({
@@ -43,14 +43,14 @@ export default function Login() {
     event.preventDefault();
 
     await axios
-      .post("/api/token/obtain", JSON.stringify(request), NO_TOKEN_OPTIONS)
+      .post("/api/customer/token/obtain", JSON.stringify(request), NO_TOKEN_OPTIONS)
       .then((response) => {
         // ! Use cookies here instead
         localStorage.setItem("torch_at", response.data.access);
         localStorage.setItem("torch_rt", response.data.refresh);
 
         return axios.get(
-          `/api/${request.username}`,
+          `/api/${request.email}`,
           authOptions(localStorage.getItem("torch_at"))
         );
       })
@@ -89,11 +89,11 @@ export default function Login() {
         </Form.Row>
         <br />
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Username:</Form.Label>
+          <Form.Label className="m-2">Email:</Form.Label>
           <Form.Control
-            id="username"
+            id="email"
             type="text"
-            value={request.username}
+            value={request.email}
             onChange={handleInputChange}
             required
           />

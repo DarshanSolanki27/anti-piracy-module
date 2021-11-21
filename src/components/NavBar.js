@@ -37,7 +37,7 @@ export default function NavBar() {
         className="p-3 m-3"
         style={{ border: "2px solid cyan", borderRadius: "50px 20px" }}
       >
-        <h2>DR Blog</h2>
+        <h2>Pi-Rated</h2>
       </Navbar.Brand>
 
       <Nav
@@ -66,7 +66,7 @@ export default function NavBar() {
                 JSON.parse(localStorage.getItem("torch_user_data"))["username"]
               }`}
             >
-              My Posts
+              My Products
             </Nav.Link>
           </Nav.Item>
         )}
@@ -96,7 +96,7 @@ export default function NavBar() {
           </Navbar.Brand>
 
           <Button href="/p/create" variant="outline-info" className="m-2">
-            Create New Post
+            Buy New Product
           </Button>
 
           <Button onClick={logout} variant="outline-info" className="m-2">

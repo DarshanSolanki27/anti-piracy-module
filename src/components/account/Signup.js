@@ -19,7 +19,7 @@ export default function Signup() {
 
   // State
   const [request, setRequest] = useState({
-    username: "",
+    email: "",
     password: "",
     password2: "",
   });
@@ -28,7 +28,7 @@ export default function Signup() {
     error: [],
   });
 
-  // Handling username, password and password2 inputs
+  // Handling email, password and password2 inputs
   function handleInputChange(event) {
     const { id, value } = event.currentTarget;
 
@@ -57,7 +57,7 @@ export default function Signup() {
       delete request["password2"];
 
       await axios
-        .post("/api/signup", JSON.stringify(request), NO_TOKEN_OPTIONS)
+        .post("/api/customer/signup", JSON.stringify(request), NO_TOKEN_OPTIONS)
         .then((response) => {
           setMsg({ status: false, error: [] });
           history.push("/login");
@@ -74,8 +74,8 @@ export default function Signup() {
             setMsg({
               show: true,
               error:
-                error.response.data["username"] !== undefined
-                  ? ["Username taken."]
+                error.response.data["email"] !== undefined
+                  ? ["email taken."]
                   : error.response.data["password"],
             });
         });
@@ -96,16 +96,16 @@ export default function Signup() {
           <h2>Signup</h2>
         </Form.Row>
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Username:</Form.Label>
+          <Form.Label className="m-2">Email:</Form.Label>
           <Form.Control
-            id="username"
+            id="email"
             type="text"
-            value={request.username}
+            value={request.email}
             onChange={handleInputChange}
             required
           />
         </Form.Group>
-        <Form.Text>Username cannot be changed later</Form.Text>
+        <Form.Text>Email cannot be changed later</Form.Text>
         <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">Password:</Form.Label>
           <Form.Control
