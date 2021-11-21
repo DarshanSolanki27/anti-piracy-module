@@ -5,7 +5,8 @@ from rest_framework_simplejwt.views import (
 )
 
 from .views import (
-    CustomerSignupView
+    CustomerSignupView,
+    ProductAuthenticationView
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('token/refresh', TokenRefreshView.as_view()),
 
     path('signup', CustomerSignupView.as_view()),
+    path('product/<int:product>/<str:mac_id>', ProductAuthenticationView.as_view())
 ]

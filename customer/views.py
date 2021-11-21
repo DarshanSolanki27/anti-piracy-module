@@ -1,10 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.status import (
-    HTTP_201_CREATED, HTTP_400_BAD_REQUEST)
+    HTTP_201_CREATED, HTTP_400_BAD_REQUEST
+)
 from rest_framework.response import Response
+from rest_framework.generics import (
+    UpdateAPIView,
+    get_object_or_404
+)
+
+from customer.models import Purchase
 
 from .serializers import (
-    CustomerSignupSerializer
+    CustomerSignupSerializer,
+    ProductAuthenticationSerializer
 )
 
 
@@ -28,3 +36,32 @@ class CustomerSignupView(APIView):
             return Response(status=HTTP_201_CREATED)
 
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+
+"""
+Reference https://www.django-rest-framework.org/api-guide/generic-views/#creating-custom-mixins
+"""
+
+
+class MultipleFieldLookupMixin:
+    """
+    Apply this mixin to any view or viewset to get multiple field filtering
+    based on a `lookup_fields` attribute, instead of the default single field filtering.
+    """
+
+    def get_object(self):
+        queryset = self.get_queryset()             # Get the base queryset
+        queryset = self.filter_queryset(queryset)  # Apply any filter backends
+        filter = {}
+        for field in self.lookup_fields:
+            if self.kwargs[field]:  # Ignore empty fields.
+                filter[field] = self.kwargs[field]
+        obj = get_object_or_404(queryset, **filter)  # Lookup the object
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+
+class ProductAuthenticationView(MultipleFieldLookupMixin, UpdateAPIView):
+    queryset = Purchase.objects.all()
+    serializer_class = ProductAuthenticationSerializer
+    lookup_fields = ['product', 'mac_id']

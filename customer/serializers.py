@@ -54,17 +54,14 @@ class PurchaseSerializer(ModelSerializer):
         return Purchase.objects.create(**validated_data)
 
 
-class AuthenticateProduct(ModelSerializer):
+class ProductAuthenticationSerializer(ModelSerializer):
     class Meta:
         model = Purchase
-        fields = ['mac_id', 'product_id']
+        fields = ['mac_id', 'product']
 
     def update(self, instance, validated_data):
-        purchase = Purchase.objects.filter(
-            product=validated_data.get('purchase_id'), mac_id=validated_data.get('mac_id'))
-
-        if purchase is not None:
-            if purchase.authenticated is False:
+        if instance is not None:
+            if instance.authenticated is False:
                 instance.authencated = True
                 instance.save()
             else:
