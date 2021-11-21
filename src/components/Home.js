@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
-import PostCard from "./post/ProductCard";
+import PostCard from "./product/ProductCard";
 
 export default function Home() {
   const axios = require("axios");

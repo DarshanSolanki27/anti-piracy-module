@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 
-import logo from "./Microsoft-Word-Logo.png";
+import logo from "./logo512.png";
 export default function PostCard({ post, isAuthor }) {
   const history = useHistory();
 
