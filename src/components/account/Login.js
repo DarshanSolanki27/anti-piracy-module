@@ -11,7 +11,7 @@ export default function Login() {
 
   // State
   const [request, setRequest] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const [msg, setMsg] = useState({
@@ -50,7 +50,7 @@ export default function Login() {
         localStorage.setItem("torch_rt", response.data.refresh);
 
         return axios.get(
-          `/api/${request.email}`,
+          `/api/${request.username}`,
           authOptions(localStorage.getItem("torch_at"))
         );
       })
@@ -89,11 +89,11 @@ export default function Login() {
         </Form.Row>
         <br />
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Email:</Form.Label>
+          <Form.Label className="m-2">username:</Form.Label>
           <Form.Control
-            id="email"
+            id="username"
             type="text"
-            value={request.email}
+            value={request.username}
             onChange={handleInputChange}
             required
           />
