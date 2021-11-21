@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from ..company.models import Product
+
+import sys
+sys.path.append("..")
+from company.models import Product  # noqa: E402
 
 
 class Customer(User):
