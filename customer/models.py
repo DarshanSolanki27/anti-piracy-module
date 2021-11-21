@@ -7,12 +7,12 @@ from company.models import Product  # noqa: E402
 
 
 class Customer(User):
-    mac_id = models.CharField(max_length=17)
+    pass
 
 
 class Purchase(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    mac_id = models.CharField(max_length=17)
     date_of_purchase = models.DateField(auto_now_add=True)
     authenticated = models.BooleanField(default=False)
 
