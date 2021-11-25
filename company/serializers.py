@@ -6,6 +6,7 @@ from rest_framework.validators import UniqueValidator
 
 from .models import (
     Company,
+    Product,
 )
 
 
@@ -50,3 +51,9 @@ class CompanySerializer(ModelSerializer):
     class Meta:
         model = Company
         fields = ['id', 'username']
+
+
+class ProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'company', 'description', 'image', 'url']

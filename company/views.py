@@ -4,15 +4,18 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.generics import (
+    ListCreateAPIView,
     RetrieveAPIView
 )
 
 from .models import (
-    Company
+    Company,
+    Product
 )
 from .serializers import (
     CompanySignupSerializer,
-    CompanySerializer
+    CompanySerializer,
+    ProductSerializer
 )
 
 
@@ -42,3 +45,8 @@ class CompanyRetrieveView(RetrieveAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
     lookup_field = 'username'
+
+
+class ProductListCreateView(ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
