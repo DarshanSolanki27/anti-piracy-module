@@ -17,20 +17,29 @@ import EditDeleteProduct from "./components/product/EditDeleteProduct";
 
 // Context
 import AuthProvider from "./contexts/AuthContext";
+import CustomerNavBar from "./components/customer/CustomerNavBar";
+import CustomerPurchases from "./components/customer/CustomerPurchses";
 
 function App() {
+  const userData = JSON.parse(localStorage.getItem("torch_user_data"));
+
   return (
     <AuthProvider>
       <BrowserRouter>
-        <NavBar />
+        {userData !== null && userData["customer"] === true ? (
+          <CustomerNavBar />
+        ) : (
+          <NavBar />
+        )}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/com_login" component={Com_Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/com_signup" component={Com_Signup} />
-          <Route exact path="/:username" component={UserProducts} />
-          <Route exact path="/p/create" component={CreateProduct} />
+          <Route exact path="/add-product" component={CreateProduct} />
+          <Route exact path="/:id/products" component={UserProducts} />
+          <Route exact path="/:id/purchases" component={CustomerPurchases} />
           <Route
             exact
             path="/:username/confirm-delete"

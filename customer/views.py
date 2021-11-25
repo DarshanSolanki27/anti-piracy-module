@@ -41,6 +41,12 @@ class CustomerSignupView(APIView):
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 
+class CustomerRetrieveView(RetrieveAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    lookup_field = 'username'
+
+
 """
 Reference https://www.django-rest-framework.org/api-guide/generic-views/#creating-custom-mixins
 """
@@ -70,13 +76,9 @@ class ProductAuthenticationView(MultipleFieldLookupMixin, UpdateAPIView):
     lookup_fields = ['product', 'mac_id']
 
 
-class CustomerRetrieveView(RetrieveAPIView):
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
-    lookup_field = 'username'
-
-
 class CustomerPurchaseListView(ListAPIView):
-    queryset = Purchase
+    queryset = Purchase.objects.all()
     serializer_class = PurchaseSerializer
-    lookup_field = 'customer'
+
+    def get_queryset(self):
+        return self.queryset.filter(customer=self.kwargs['customer'])

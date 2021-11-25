@@ -4,6 +4,7 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.generics import (
+    ListAPIView,
     ListCreateAPIView,
     RetrieveAPIView
 )
@@ -48,5 +49,10 @@ class CompanyRetrieveView(RetrieveAPIView):
 
 
 class ProductListCreateView(ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ProductListView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

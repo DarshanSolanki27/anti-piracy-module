@@ -2,8 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 
-import logo from "./logo512.png";
-export default function PostCard({ post, isAuthor }) {
+export default function PostCard({ post }) {
   const history = useHistory();
 
   const handleButtonClick = (url) => {
@@ -22,9 +21,9 @@ export default function PostCard({ post, isAuthor }) {
       }}
     >
       <Card.Header>
-        <h1>{post.title}</h1>
-        <img src={logo} width="200" height="125"></img>
-        {isAuthor === true && (
+        <h1>{post.name}</h1>
+        <img src={post.image} width="200" height="125" alt="Image not found!" />
+        {/* {isAuthor === true && (
           <span>
             <Button
               id="edit"
@@ -33,31 +32,30 @@ export default function PostCard({ post, isAuthor }) {
               Edit
             </Button>
           </span>
-        )}
-        <div className="">last edited: {post.modified}</div>
+        )} */}
         <Card.Subtitle className="text-muted">
           <footer
             id="author"
             className="blockquote-footer d-flex justify-content-end"
           >
             <cite
-              onClick={() => history.push(`/${post.author}`)}
+              onClick={() => history.push(`/${post.company}`)}
               style={{ cursor: "pointer" }}
             >
-              Company: {post.author}
+              Company: {post.company}
             </cite>
           </footer>
         </Card.Subtitle>
       </Card.Header>
 
       <Card.Body
-        onClick={() => handleButtonClick(`/p/${post.slug}`)}
+        onClick={() => handleButtonClick(`${post.id}`)}
         style={{ width: "98%", cursor: "pointer" }}
       >
         <blockquote className="blockquote">
-          {post.content.length > 50
-            ? post.content.substr(0, 50) + "..."
-            : post.content}
+          {post.description.length > 50
+            ? post.description.substr(0, 50) + "..."
+            : post.description}
         </blockquote>
       </Card.Body>
     </Card>

@@ -2,9 +2,9 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
-import { useAuth, useUpdateAuth } from "../contexts/AuthContext";
+import { useAuth, useUpdateAuth } from "../../contexts/AuthContext";
 
-export default function NavBar() {
+export default function CustomerNavBar() {
   const history = useHistory();
 
   // Context
@@ -64,7 +64,7 @@ export default function NavBar() {
             <Nav.Link
               href={`/${
                 JSON.parse(localStorage.getItem("torch_user_data"))["id"]
-              }/products`}
+              }/purchases`}
             >
               My Products
             </Nav.Link>
@@ -95,9 +95,6 @@ export default function NavBar() {
             {JSON.parse(localStorage.getItem("torch_user_data"))["username"]}!
           </Navbar.Brand>
 
-          <Button href="/add-product" variant="outline-info" className="m-2">
-            Add Product
-          </Button>
           <Button onClick={logout} variant="outline-info" className="m-2">
             Logout
           </Button>

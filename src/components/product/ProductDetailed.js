@@ -9,7 +9,7 @@ export default function ProductDetailed() {
 
   const history = useHistory();
   const location = useLocation();
-  const { slug } = useParams();
+  const { id } = useParams();
 
   // State
   const [post, setPost] = useState({});
@@ -22,7 +22,7 @@ export default function ProductDetailed() {
   useEffect(() => {
     const fetchPost = async () => {
       await axios
-        .get(`/api/p/${slug}`)
+        .get(`/api/company/products`)
         .then((response) => {
           setPost(response.data);
         })
@@ -48,7 +48,7 @@ export default function ProductDetailed() {
   // Link to edit post page
   const handleEditClick = () => {
     history.push({
-      pathname: `/p/${slug}/edit`,
+      pathname: `/p/${id}/edit`,
       state: { post },
     });
   };

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
-import ProductCard from "./ProductCard";
+import ProductCard from "../product/ProductCard";
 import { useAuth } from "../../contexts/AuthContext";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
-export default function UserProducts() {
+export default function CustomerPurchases() {
   const axios = require("axios");
   const history = useHistory();
-  const { username } = useParams();
+  const { id } = useParams();
 
   // State
   const [posts, setPosts] = useState([]);
@@ -22,9 +22,9 @@ export default function UserProducts() {
   useEffect(() => {
     axios
       .get(
-        `/api/company/${
+        `/api/customer/${
           JSON.parse(localStorage.getItem("torch_user_data"))["id"]
-        }/products`,
+        }/purchases`,
         NO_TOKEN_OPTIONS
       )
       .then((response) => {

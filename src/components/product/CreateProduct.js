@@ -27,6 +27,13 @@ export default function CreateProduct() {
     });
   };
 
+  const handleImageInputChange = (event) => {
+    setRequest({
+      ...request,
+      image: event.currentTarget.files[0],
+    });
+  };
+
   // Create post request to API
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,22 +79,11 @@ export default function CreateProduct() {
           />
         </Form.Group>
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Company ID:</Form.Label>
-          <Form.Control
-            id="company"
-            type="number"
-            value={request.company}
-            onChange={handleInputChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">Image</Form.Label>
           <Form.Control
             id="image"
             type="file"
-            value={request.image}
-            onChange={handleInputChange}
+            onChange={handleImageInputChange}
             required
           />
         </Form.Group>
@@ -95,7 +91,7 @@ export default function CreateProduct() {
           <Form.Label className="m-2">URL</Form.Label>
           <Form.Control
             id="url"
-            as="text"
+            type="url"
             value={request.url}
             onChange={handleInputChange}
             required

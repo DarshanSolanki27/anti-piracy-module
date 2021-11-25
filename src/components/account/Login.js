@@ -55,7 +55,7 @@ export default function Login() {
         );
       })
       .then((response) => {
-        localStorage.setItem("torch_user_data", JSON.stringify(response.data));
+        localStorage.setItem("torch_user_data", JSON.stringify({...response.data, customer: true}));
         setAuth(true);
         setMsg({ status: false, error: [] });
         history.push("/");

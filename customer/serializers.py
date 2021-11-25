@@ -54,7 +54,13 @@ class CustomerSerializer(ModelSerializer):
 class PurchaseSerializer(ModelSerializer):
     class Meta:
         model = Purchase
-        fields = ['id', 'customer', 'product', ]
+        fields = ['id', 'customer', 'product', 'authenticated']
+
+        extra_kwargs = {
+            'authenticated': {
+                'read_only': True,
+            }
+        }
 
     def create(self, validated_data):
         return Purchase.objects.create(**validated_data)
@@ -68,7 +74,7 @@ class ProductAuthenticationSerializer(ModelSerializer):
     def update(self, instance, validated_data):
         if instance is not None:
             if instance.authenticated is False:
-                instance.authencated = True
+                instance.authenticated = True
                 instance.save()
             else:
                 raise ValidationError(

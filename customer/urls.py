@@ -20,5 +20,5 @@ urlpatterns = [
          ProductAuthenticationView.as_view()),
 
     path('<str:username>', CustomerRetrieveView.as_view()),
-    path('<int:cutomer>', CustomerPurchaseListView.as_view()),
+    path('<int:customer>/purchases', CustomerPurchaseListView.as_view()),
 ]
