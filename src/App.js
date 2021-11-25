@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // Components
 import Signup from "./components/account/Signup";
+import Com_Signup from "./components/account_company/Com_Signup";
 import Login from "./components/account/Login";
+import Com_Login from "./components/account_company/Com_Login";
 import ConfirmAccountDelete from "./components/account/ConfirmAccountDelete";
 import PasswordChange from "./components/account/PasswordChange";
 import Home from "./components/Home";
@@ -24,7 +26,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/com_login" component={Com_Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/com_signup" component={Com_Signup} />
           <Route exact path="/:username" component={UserProducts} />
           <Route exact path="/p/create" component={CreateProduct} />
           <Route
