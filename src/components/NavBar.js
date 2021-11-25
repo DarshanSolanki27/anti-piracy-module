@@ -95,10 +95,6 @@ export default function NavBar() {
             {JSON.parse(localStorage.getItem("torch_user_data"))["username"]}!
           </Navbar.Brand>
 
-          <Button href="/p/create" variant="outline-info" className="m-2">
-            Buy New Product
-          </Button>
-
           <Button onClick={logout} variant="outline-info" className="m-2">
             Logout
           </Button>

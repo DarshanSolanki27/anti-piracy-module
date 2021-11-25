@@ -50,7 +50,7 @@ export default function Login() {
         localStorage.setItem("torch_rt", response.data.refresh);
 
         return axios.get(
-          `/api/${request.username}`,
+          `/api/customer/${request.username}`,
           authOptions(localStorage.getItem("torch_at"))
         );
       })

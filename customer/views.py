@@ -4,15 +4,18 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.generics import (
+    ListAPIView,
+    RetrieveAPIView,
     UpdateAPIView,
     get_object_or_404
 )
 
-from customer.models import Purchase
-
+from .models import Customer, Purchase
 from .serializers import (
     CustomerSignupSerializer,
-    ProductAuthenticationSerializer
+    CustomerSerializer,
+    ProductAuthenticationSerializer,
+    PurchaseSerializer
 )
 
 
@@ -65,3 +68,15 @@ class ProductAuthenticationView(MultipleFieldLookupMixin, UpdateAPIView):
     queryset = Purchase.objects.all()
     serializer_class = ProductAuthenticationSerializer
     lookup_fields = ['product', 'mac_id']
+
+
+class CustomerRetrieveView(RetrieveAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    lookup_field = 'username'
+
+
+class CustomerPurchaseListView(ListAPIView):
+    queryset = Purchase
+    serializer_class = PurchaseSerializer
+    lookup_field = 'customer'

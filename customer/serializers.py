@@ -45,10 +45,16 @@ class CustomerSignupSerializer(ModelSerializer):
         return user
 
 
+class CustomerSerializer(ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ['id', 'username']
+
+
 class PurchaseSerializer(ModelSerializer):
     class Meta:
         model = Purchase
-        fields = ['id', 'customer_id', 'product_id', ]
+        fields = ['id', 'customer', 'product', ]
 
     def create(self, validated_data):
         return Purchase.objects.create(**validated_data)

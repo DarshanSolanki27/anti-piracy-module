@@ -12,6 +12,7 @@ class Customer(User):
 
 class Purchase(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     mac_id = models.CharField(max_length=17)
     date_of_purchase = models.DateField(auto_now_add=True)
     authenticated = models.BooleanField(default=False)
