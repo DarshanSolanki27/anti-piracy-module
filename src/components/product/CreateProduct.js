@@ -10,9 +10,11 @@ export default function CreateProduct() {
 
   // State
   const [request, setRequest] = useState({
-    title: "",
-    content: "",
-    author: JSON.parse(localStorage.getItem("torch_user_data"))["username"],
+    name: "",
+    description: "",
+    company: JSON.parse(localStorage.getItem("torch_user_data"))["id"],
+    image: null,
+    url: "",
   });
 
   // Handling form fields change
@@ -31,12 +33,14 @@ export default function CreateProduct() {
 
     await axios
       .post(
-        "/api/p",
+        `/api/company/${
+          JSON.parse(localStorage.getItem("torch_user_data"))["id"]
+        }/products`,
         JSON.stringify(request),
         authOptions(localStorage.getItem("torch_at"))
       )
       .then(() => {
-        alert("Post successful");
+        alert("Product added successful");
         history.push(
           `/${JSON.parse(localStorage.getItem("torch_user_data"))["username"]}`
         );
@@ -48,28 +52,58 @@ export default function CreateProduct() {
     <Jumbotron className="d-flex p-2 text-center" style={{ width: "95%" }}>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Title:</Form.Label>
+          <Form.Label className="m-2">Name:</Form.Label>
           <Form.Control
-            id="title"
+            id="name"
             type="text"
-            value={request.title}
+            value={request.name}
             onChange={handleInputChange}
             required
           />
         </Form.Group>
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">Content:</Form.Label>
+          <Form.Label className="m-2">Description:</Form.Label>
           <Form.Control
-            id="content"
+            id="description"
             as="textarea"
-            value={request.content}
+            value={request.description}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">Company ID:</Form.Label>
+          <Form.Control
+            id="company"
+            type="number"
+            value={request.company}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">Image</Form.Label>
+          <Form.Control
+            id="image"
+            type="file"
+            value={request.image}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">URL</Form.Label>
+          <Form.Control
+            id="url"
+            as="text"
+            value={request.url}
             onChange={handleInputChange}
             required
           />
         </Form.Group>
 
         <Button type="submit" className="m-2" variant="outline-success">
-          Create Post
+          Add Product
         </Button>
       </Form>
     </Jumbotron>

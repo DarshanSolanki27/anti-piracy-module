@@ -44,7 +44,7 @@ export default function PostCard({ post, isAuthor }) {
               onClick={() => history.push(`/${post.author}`)}
               style={{ cursor: "pointer" }}
             >
-              Author: {post.author}
+              Company: {post.author}
             </cite>
           </footer>
         </Card.Subtitle>
