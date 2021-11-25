@@ -60,7 +60,7 @@ export default function Com_Signup() {
         .post("/api/company/signup", JSON.stringify(request), NO_TOKEN_OPTIONS)
         .then((response) => {
           setMsg({ status: false, error: [] });
-          history.push("/login");
+          history.push("/com_login");
         })
         .catch((error) => {
           setRequest({

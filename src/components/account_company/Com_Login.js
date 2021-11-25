@@ -54,7 +54,7 @@ export default function Com_Login() {
         localStorage.setItem("torch_rt", response.data.refresh);
 
         return axios.get(
-          `/api/${request.username}`,
+          `/api/company/${request.username}`,
           authOptions(localStorage.getItem("torch_at"))
         );
       })
