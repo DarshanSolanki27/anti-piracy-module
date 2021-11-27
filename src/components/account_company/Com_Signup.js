@@ -19,7 +19,10 @@ export default function Com_Signup() {
 
   // State
   const [request, setRequest] = useState({
+    name: "",
     email: "",
+    description: "",
+    url: "",
     password: "",
     password2: "",
   });
@@ -96,16 +99,46 @@ export default function Com_Signup() {
           <h2>Signup</h2>
         </Form.Row>
         <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">Name:</Form.Label>
+          <Form.Control
+            id="name"
+            type="text"
+            value={request.name}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">Email:</Form.Label>
           <Form.Control
             id="email"
-            type="text"
+            type="email"
             value={request.email}
             onChange={handleInputChange}
             required
           />
         </Form.Group>
         <Form.Text>Email cannot be changed later</Form.Text>
+        <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">Description:</Form.Label>
+          <Form.Control
+            id="description"
+            type="textarea"
+            value={request.description}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="d-flex p-2">
+          <Form.Label className="m-2">URL:</Form.Label>
+          <Form.Control
+            id="url"
+            type="url"
+            value={request.url}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
         <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">Password:</Form.Label>
           <Form.Control
@@ -141,8 +174,14 @@ export default function Com_Signup() {
 
         <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
           Already have an account?
-          <Button href="/login" variant="link">
+          <Button href="/com_login" variant="link">
             Login
+          </Button>
+        </Alert>
+        <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
+          Are you a customer?
+          <Button href="/signup" variant="link">
+            Click here
           </Button>
         </Alert>
       </Form>

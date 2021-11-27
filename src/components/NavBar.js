@@ -92,7 +92,7 @@ export default function NavBar() {
         <Nav className="d-flex justify-content-end">
           <Navbar.Brand className="m-2" style={{ color: "cyan" }}>
             Hello{" "}
-            {JSON.parse(localStorage.getItem("torch_user_data"))["username"]}!
+            {JSON.parse(localStorage.getItem("torch_user_data"))["name"]}!
           </Navbar.Brand>
 
           <Button href="/add-product" variant="outline-info" className="m-2">

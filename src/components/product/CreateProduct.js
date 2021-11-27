@@ -84,7 +84,6 @@ export default function CreateProduct() {
             id="image"
             type="file"
             onChange={handleImageInputChange}
-            required
           />
         </Form.Group>
         <Form.Group className="d-flex p-2">

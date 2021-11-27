@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
+import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
 export default function PostCard({ post }) {
+  const axios = require("axios");
   const history = useHistory();
 
   const userData = JSON.parse(localStorage.getItem("torch_user_data"));
+  const [company, setCompany] = useState({});
 
   const handleButtonClick = (url) => {
     history.push({
@@ -13,6 +16,18 @@ export default function PostCard({ post }) {
       state: { post },
     });
   };
+
+  useEffect(() => {
+    axios
+      .get(`/api/company/u/${post.company}`, NO_TOKEN_OPTIONS)
+      .then((res) => {
+        setCompany(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <Card
@@ -41,7 +56,7 @@ export default function PostCard({ post }) {
               onClick={() => history.push(`/${post.company}/products`)}
               style={{ cursor: "pointer" }}
             >
-              Company: {post.company}
+              Company: {company.name}
             </cite>
           </footer>
         </Card.Subtitle>

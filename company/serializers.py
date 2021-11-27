@@ -13,7 +13,7 @@ from .models import (
 class CompanySignupSerializer(ModelSerializer):
     class Meta:
         model = Company
-        fields = ['id', 'email', 'password']
+        fields = ['id', 'name', 'description', 'url', 'email', 'password']
 
         extra_kwargs = {
             'email': {
@@ -42,7 +42,13 @@ class CompanySignupSerializer(ModelSerializer):
 
     def create(self, validated_data):
         user = Company.objects.create_user(
-            username=validated_data['email'], email=validated_data['email'], password=validated_data['password'])
+            username=validated_data['email'],
+            email=validated_data['email'],
+            name=validated_data['name'],
+            description=validated_data['description'],
+            url=validated_data['url'],
+            password=validated_data['password']
+        )
 
         return user
 
@@ -50,10 +56,16 @@ class CompanySignupSerializer(ModelSerializer):
 class CompanySerializer(ModelSerializer):
     class Meta:
         model = Company
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'name', 'description', 'url']
 
 
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'company', 'description', 'image', 'url']
+
+        extra_kwargs = {
+            'image': {
+                'required': False
+            }
+        }

@@ -43,7 +43,11 @@ export default function Login() {
     event.preventDefault();
 
     await axios
-      .post("/api/customer/token/obtain", JSON.stringify(request), NO_TOKEN_OPTIONS)
+      .post(
+        "/api/customer/token/obtain",
+        JSON.stringify(request),
+        NO_TOKEN_OPTIONS
+      )
       .then((response) => {
         // ! Use cookies here instead
         localStorage.setItem("torch_at", response.data.access);
@@ -55,7 +59,10 @@ export default function Login() {
         );
       })
       .then((response) => {
-        localStorage.setItem("torch_user_data", JSON.stringify({...response.data, customer: true}));
+        localStorage.setItem(
+          "torch_user_data",
+          JSON.stringify({ ...response.data, customer: true })
+        );
         setAuth(true);
         setMsg({ status: false, error: [] });
         history.push("/");
@@ -126,6 +133,13 @@ export default function Login() {
           Don't have an account?
           <Button href="/signup" variant="link">
             Signup
+          </Button>
+        </Alert>
+
+        <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
+          Are you a company?
+          <Button href="/com_login" variant="link">
+            Click here
           </Button>
         </Alert>
       </Form>

@@ -48,6 +48,12 @@ class CompanyRetrieveView(RetrieveAPIView):
     lookup_field = 'username'
 
 
+class CompanyDetailView(RetrieveAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    lookup_field = 'id'
+
+
 class ProductListCreateView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

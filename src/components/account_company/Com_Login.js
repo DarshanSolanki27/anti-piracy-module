@@ -74,7 +74,7 @@ export default function Com_Login() {
           ...request,
           password: "",
         });
-        history.push("/login");
+        history.push("/com_login");
       });
   };
 
@@ -128,8 +128,14 @@ export default function Com_Login() {
 
         <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
           Don't have an account?
-          <Button href="/signup" variant="link">
+          <Button href="/com_signup" variant="link">
             Signup
+          </Button>
+        </Alert>
+        <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
+          Are you a customer?
+          <Button href="/login" variant="link">
+            Click here
           </Button>
         </Alert>
       </Form>

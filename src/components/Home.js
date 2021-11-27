@@ -22,7 +22,7 @@ export default function Home() {
       .catch((error) => {
         console.log(error);
       });
-  }, [posts]);
+  }, []);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" className="m-5" />;

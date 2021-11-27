@@ -36,7 +36,7 @@ export default function CustomerPurchases() {
         history.goBack();
         console.log(error);
       });
-  }, [posts]);
+  }, []);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" />;

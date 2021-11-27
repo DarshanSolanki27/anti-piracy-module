@@ -145,6 +145,12 @@ export default function Signup() {
             Login
           </Button>
         </Alert>
+        <Alert variant="warning" style={{ borderRadius: "20px 50px" }}>
+          Are you a company?
+          <Button href="/com_signup" variant="link">
+            Click here
+          </Button>
+        </Alert>
       </Form>
     </Jumbotron>
   );
