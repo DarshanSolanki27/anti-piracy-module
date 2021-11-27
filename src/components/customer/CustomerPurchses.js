@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
-import ProductCard from "../product/ProductCard";
+import PurchaseCard from "./PurchaseCard";
 import { useAuth } from "../../contexts/AuthContext";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
 export default function CustomerPurchases() {
   const axios = require("axios");
   const history = useHistory();
-  const { id } = useParams();
 
   // State
   const [posts, setPosts] = useState([]);
@@ -54,7 +53,7 @@ export default function CustomerPurchases() {
         <Jumbotron className="m-1">
           {/* <h2 className="m-2">{username}'s products</h2> */}
           {posts.map((post) => (
-            <ProductCard post={post} />
+            <PurchaseCard post={post} />
           ))}
         </Jumbotron>
       );
