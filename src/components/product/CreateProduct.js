@@ -38,13 +38,24 @@ export default function CreateProduct() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    let formData = new FormData();
+    for (const name in request) {
+      formData.append(name, request[name]);
+    }
+
     await axios
       .post(
         `/api/company/${
           JSON.parse(localStorage.getItem("torch_user_data"))["id"]
         }/products`,
-        JSON.stringify(request),
-        authOptions(localStorage.getItem("torch_at"))
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+        // JSON.stringify(request),
+        // authOptions(localStorage.getItem("torch_at"))
       )
       .then(() => {
         alert("Product added successful");
@@ -85,6 +96,7 @@ export default function CreateProduct() {
             type="file"
             onChange={handleImageInputChange}
           />
+          <img src={request.image} alt="not found" />
         </Form.Group>
         <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">URL</Form.Label>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Image } from "react-bootstrap";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
 export default function PostCard({ post }) {
@@ -39,7 +39,7 @@ export default function PostCard({ post }) {
     >
       <Card.Header>
         <h1>{post.name}</h1>
-        <img src={post.image} width="200" height="125" alt="Not found!" />
+        <Image src={post.image} />
         {userData !== null && userData["customer"] === true && (
           <span>
             <Button id="buy" as="a" href={post.url}>

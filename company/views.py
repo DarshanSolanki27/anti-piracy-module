@@ -8,6 +8,10 @@ from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveAPIView
 )
+from rest_framework.parsers import (
+    MultiPartParser,
+    FormParser
+)
 
 from .models import (
     Company,
@@ -57,6 +61,7 @@ class CompanyDetailView(RetrieveAPIView):
 class ProductListCreateView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    parser_classes = [MultiPartParser, FormParser]
 
 
 class ProductListView(ListAPIView):
