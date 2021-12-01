@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
 import ProductCard from "./ProductCard";
@@ -9,7 +9,6 @@ import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 export default function UserProducts() {
   const axios = require("axios");
   const history = useHistory();
-  const { username } = useParams();
 
   // State
   const [posts, setPosts] = useState([]);
@@ -37,7 +36,7 @@ export default function UserProducts() {
         history.goBack();
         console.log(error);
       });
-  }, [posts]);
+  }, []);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" />;

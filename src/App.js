@@ -26,10 +26,10 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        {userData !== null && userData["customer"] === true ? (
-          <CustomerNavBar />
-        ) : (
+        {userData === null || userData["customer"] !== true ? (
           <NavBar />
+        ) : (
+          <CustomerNavBar />
         )}
         <Switch>
           <Route exact path="/" component={Home} />

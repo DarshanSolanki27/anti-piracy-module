@@ -8,7 +8,8 @@ from .views import (
     CustomerPurchaseListView,
     CustomerRetrieveView,
     CustomerSignupView,
-    ProductAuthenticationView
+    ProductAuthenticationView,
+    PurchaseCreateView
 )
 
 urlpatterns = [
@@ -19,6 +20,7 @@ urlpatterns = [
     path('product/<int:product>/<str:mac_id>',
          ProductAuthenticationView.as_view()),
 
+    path('purchase', PurchaseCreateView.as_view()),
     path('<str:username>', CustomerRetrieveView.as_view()),
     path('<int:customer>/purchases', CustomerPurchaseListView.as_view()),
 ]

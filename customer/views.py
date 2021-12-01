@@ -4,6 +4,7 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.generics import (
+    CreateAPIView,
     ListAPIView,
     RetrieveAPIView,
     UpdateAPIView,
@@ -12,6 +13,7 @@ from rest_framework.generics import (
 
 from .models import Customer, Purchase
 from .serializers import (
+    CustomerPurchaseSerializer,
     CustomerSignupSerializer,
     CustomerSerializer,
     ProductAuthenticationSerializer,
@@ -78,7 +80,31 @@ class ProductAuthenticationView(MultipleFieldLookupMixin, UpdateAPIView):
 
 class CustomerPurchaseListView(ListAPIView):
     queryset = Purchase.objects.all()
-    serializer_class = PurchaseSerializer
+    serializer_class = CustomerPurchaseSerializer
 
     def get_queryset(self):
         return self.queryset.filter(customer=self.kwargs['customer'])
+
+
+class PurchaseCreateView(CreateAPIView):
+    queryset = Purchase.objects.all()
+    serializer_class = PurchaseSerializer
+
+    def post(self, request, format=None):
+        customer = get_object_or_404(Customer.objects.all(
+        ), username=request.data['customer_username'])
+        serializer = self.serializer_class(data=request.data)
+
+        if customer is not None and serializer.is_valid():
+            # purchase = serializer.create(
+            #     product=serializer.validated_data['product'],
+            #     customer=customer.id,
+            #     mac_id=serializer.validated_data['mac_id'])
+            serializer.validated_data.pop('customer_username')
+            purchase = serializer.create(
+                validated_data=serializer.validated_data, customer=customer.id)
+            purchase.save()
+
+            return Response(status=HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)

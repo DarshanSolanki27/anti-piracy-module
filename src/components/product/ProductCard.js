@@ -33,7 +33,7 @@ export default function PostCard({ post }) {
     <Card
       className="m-3"
       style={{
-        backgroundColor: "lightsteelblue",
+        backgroundColor: "salmon",
         border: "3px solid darkblue",
       }}
     >

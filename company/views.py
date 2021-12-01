@@ -63,6 +63,9 @@ class ProductListCreateView(ListCreateAPIView):
     serializer_class = ProductSerializer
     parser_classes = [MultiPartParser, FormParser]
 
+    def get_queryset(self):
+        return self.queryset.filter(company=self.kwargs['company'])
+
 
 class ProductListView(ListAPIView):
     queryset = Product.objects.all()
