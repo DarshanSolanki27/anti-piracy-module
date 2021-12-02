@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Alert, Jumbotron, Spinner } from "react-bootstrap";
 
 import PurchaseCard from "./PurchaseCard";
-import { useAuth } from "../../contexts/AuthContext";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
 export default function CustomerPurchases() {
@@ -13,9 +12,6 @@ export default function CustomerPurchases() {
   // State
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  // context
-  const isAuth = useAuth();
 
   // Fetching user's posts
   useEffect(() => {
@@ -51,7 +47,6 @@ export default function CustomerPurchases() {
     } else {
       return (
         <Jumbotron className="m-1">
-          {/* <h2 className="m-2">{username}'s products</h2> */}
           {posts.map((post) => (
             <PurchaseCard post={post} />
           ))}
