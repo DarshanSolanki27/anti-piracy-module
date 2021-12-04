@@ -44,14 +44,12 @@ export default function UserProducts() {
     if (posts.length === 0) {
       return (
         <Alert variant="danger" className="m-4 text-center">
-          <Alert.Heading>Nothing blogs to show!</Alert.Heading>
-          <p>Try clicking on Create New Post!</p>
+          <Alert.Heading>Nothing to show!</Alert.Heading>
         </Alert>
       );
     } else {
       return (
         <Jumbotron className="m-1">
-          {/* <h2 className="m-2">{username}'s products</h2> */}
           {posts.map((post) => (
             <ProductCard post={post} />
           ))}

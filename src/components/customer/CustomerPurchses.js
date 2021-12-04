@@ -13,7 +13,7 @@ export default function CustomerPurchases() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetching user's posts
+  // Fetching user'
   useEffect(() => {
     axios
       .get(
@@ -40,8 +40,7 @@ export default function CustomerPurchases() {
     if (posts.length === 0) {
       return (
         <Alert variant="danger" className="m-4 text-center">
-          <Alert.Heading>Nothing blogs to show!</Alert.Heading>
-          <p>Try clicking on Create New Post!</p>
+          <Alert.Heading>Nothing to show!</Alert.Heading>
         </Alert>
       );
     } else {

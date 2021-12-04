@@ -17,7 +17,7 @@ urlpatterns = [
     path('token/refresh', TokenRefreshView.as_view()),
 
     path('signup', CustomerSignupView.as_view()),
-    path('product/<int:product>/<str:mac_id>',
+    path('purchase/<str:product>/<str:mac_id>',
          ProductAuthenticationView.as_view()),
 
     path('purchase', PurchaseCreateView.as_view()),

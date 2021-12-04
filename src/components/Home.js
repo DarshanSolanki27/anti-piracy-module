@@ -30,7 +30,7 @@ export default function Home() {
     if (posts.length === 0) {
       return (
         <Alert variant="danger" className="m-4 text-center">
-          <Alert.Heading>Nothing blogs to show!</Alert.Heading>
+          <Alert.Heading>Nothing to show!</Alert.Heading>
         </Alert>
       );
     } else {

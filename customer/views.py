@@ -96,13 +96,9 @@ class PurchaseCreateView(CreateAPIView):
         serializer = self.serializer_class(data=request.data)
 
         if customer is not None and serializer.is_valid():
-            # purchase = serializer.create(
-            #     product=serializer.validated_data['product'],
-            #     customer=customer.id,
-            #     mac_id=serializer.validated_data['mac_id'])
             serializer.validated_data.pop('customer_username')
             purchase = serializer.create(
-                validated_data=serializer.validated_data, customer=customer.id)
+                validated_data=serializer.validated_data, customer=customer)
             purchase.save()
 
             return Response(status=HTTP_201_CREATED)

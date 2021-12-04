@@ -78,14 +78,15 @@ class PurchaseSerializer(ModelSerializer):
 
         return value
 
-    def create(self, validated_data):
-        return Purchase.objects.create(**validated_data)
+    def create(self, validated_data, customer):
+        return Purchase.objects.create(**validated_data, customer=customer)
 
 
 class CustomerPurchaseSerializer(ModelSerializer):
     class Meta:
         model = Purchase
-        fields = ['id', 'product', 'customer', 'authenticated', 'date_of_purchase']
+        fields = ['id', 'product', 'customer',
+                  'authenticated', 'date_of_purchase']
 
 
 class ProductAuthenticationSerializer(ModelSerializer):
