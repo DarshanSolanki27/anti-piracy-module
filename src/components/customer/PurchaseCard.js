@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
@@ -32,9 +32,14 @@ function PurchaseCard({ post }) {
   }, []);
 
   return (
-    <Card>
+    <Card className="m-2" style={{ border: "3px solid black" , width: "70rem" }}>
       <Card.Header>
         <h1>{product.name}</h1>
+        <Image
+          src={product.image}
+          style={{ height: "5rem" }}
+          alt="Img not found"
+        />
         <div>By: {company.name}</div>
         <div>Purchase date: {post.date_of_purchase}</div>
       </Card.Header>

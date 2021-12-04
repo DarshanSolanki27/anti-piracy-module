@@ -35,7 +35,7 @@ export default function CustomerNavBar() {
     <Navbar variant="dark" bg="dark">
       <Navbar.Brand
         className="p-3 m-3"
-        style={{ border: "2px solid cyan", borderRadius: "50px 20px" }}
+        style={{ border: "2px solid white", borderRadius: "50px 20px" }}
       >
         <h2>Pi-Rated</h2>
       </Navbar.Brand>
@@ -66,12 +66,12 @@ export default function CustomerNavBar() {
                 JSON.parse(localStorage.getItem("torch_user_data"))["id"]
               }/purchases`}
             >
-              My Products
+              My Purchases
             </Nav.Link>
           </Nav.Item>
         )}
 
-        {isAuth && (
+        {/* {isAuth && (
           <NavDropdown title="Account">
             {navDropdownItems.map((item) => (
               <NavDropdown.Item
@@ -85,12 +85,12 @@ export default function CustomerNavBar() {
               </NavDropdown.Item>
             ))}
           </NavDropdown>
-        )}
+        )} */}
       </Nav>
 
       {isAuth && (
         <Nav className="d-flex justify-content-end">
-          <Navbar.Brand className="m-2" style={{ color: "cyan" }}>
+          <Navbar.Brand className="m-2" style={{ color: "white" }}>
             Hello{" "}
             {JSON.parse(localStorage.getItem("torch_user_data"))["username"]}!
           </Navbar.Brand>

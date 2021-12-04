@@ -35,7 +35,7 @@ export default function Home() {
       );
     } else {
       return (
-        <Jumbotron className="justify-content-center">
+        <Jumbotron className="justify-content-center" styles={{ width: "90%" }}>
           {posts.map((post) => (
             <PostCard post={post} isAuthor={false} />
           ))}

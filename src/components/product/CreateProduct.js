@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Jumbotron } from "react-bootstrap";
+import { Button, Form, Jumbotron, Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 import { authOptions } from "../../utils/requestOptions";
@@ -67,7 +67,7 @@ export default function CreateProduct() {
   };
 
   return (
-    <Jumbotron className="d-flex p-2 text-center" style={{ width: "95%" }}>
+    <Jumbotron className="d-flex  p-2 text-center" style={{ width: "95%" }}>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="d-flex p-2">
           <Form.Label className="m-2">Name:</Form.Label>
@@ -96,10 +96,10 @@ export default function CreateProduct() {
             type="file"
             onChange={handleImageInputChange}
           />
-          <img src={request.image} alt="not found" />
+          {/* <Image src={request.image} alt="not found" /> */}
         </Form.Group>
         <Form.Group className="d-flex p-2">
-          <Form.Label className="m-2">URL</Form.Label>
+          <Form.Label className="m-2">Purchase URL</Form.Label>
           <Form.Control
             id="url"
             type="url"

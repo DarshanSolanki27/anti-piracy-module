@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Card, Image } from "react-bootstrap";
 import { NO_TOKEN_OPTIONS } from "../../utils/requestOptions";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, isOwner }) {
   const axios = require("axios");
   const history = useHistory();
 
@@ -30,16 +30,14 @@ export default function PostCard({ post }) {
   }, []);
 
   return (
-    <Card
-      className="m-3"
-      style={{
-        backgroundColor: "salmon",
-        border: "3px solid darkblue",
-      }}
-    >
+    <Card className="m-2" style={{ border: "3px solid black", width: "70rem" }}>
       <Card.Header>
         <h1>{post.name}</h1>
-        <Image src={post.image} />
+        <Image
+          src={post.image}
+          style={{ height: "5rem" }}
+          alt="Img not found "
+        />
         {userData !== null && userData["customer"] === true && (
           <span>
             <Button id="buy" as="a" href={post.url}>
@@ -47,6 +45,9 @@ export default function PostCard({ post }) {
             </Button>
           </span>
         )}
+        {userData !== null &&
+          userData["customer"] !== true &&
+          isOwner === true && <div>Product ID: {post.id}</div>}
         <Card.Subtitle className="text-muted">
           <footer
             id="author"

@@ -51,7 +51,7 @@ export default function UserProducts() {
       return (
         <Jumbotron className="m-1">
           {posts.map((post) => (
-            <ProductCard post={post} />
+            <ProductCard post={post} isOwner={true} />
           ))}
         </Jumbotron>
       );
